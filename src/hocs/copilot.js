@@ -25,7 +25,7 @@ type State = {
   currentStep: ?Step,
   visible: boolean,
   androidStatusBarVisible: boolean,
-  backdropColor: string
+  backdropColor: string,
 };
 
 const copilot = ({
@@ -36,6 +36,7 @@ const copilot = ({
   androidStatusBarVisible,
   backdropColor,
   verticalOffset = 0,
+  tooltipContainerStyle,
 } = {}) =>
   (WrappedComponent) => {
     class Copilot extends Component<any, State> {
@@ -184,6 +185,7 @@ const copilot = ({
               visible={this.state.visible}
               isFirstStep={this.isFirstStep()}
               isLastStep={this.isLastStep()}
+              tooltipContainerStyle={tooltipContainerStyle}
               currentStepNumber={this.getStepNumber()}
               currentStep={this.state.currentStep}
               stepNumberComponent={stepNumberComponent}
