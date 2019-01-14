@@ -9,7 +9,8 @@ type Props = {
   order: number,
   active?: boolean,
   _copilot: CopilotContext,
-  children: React$Element
+  children: React$Element,
+  beforeNextStep: ?func,
 };
 
 class ConnectedCopilotStep extends Component<Props> {
@@ -49,6 +50,7 @@ class ConnectedCopilotStep extends Component<Props> {
       target: this,
       wrapper: this.wrapper,
       buttonTitle: this.props.buttonTitle,
+      beforeNextStep: this.props.beforeNextStep,
     });
   }
 

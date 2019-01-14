@@ -11,6 +11,7 @@ type Props = {
   order: number, // eslint-disable-line react/no-unused-prop-types
   text: string, // eslint-disable-line react/no-unused-prop-types
   buttonTitle: string,
+  beforeNextStep: ?func,
 };
 
 class CopilotStep extends Component<Props> {
