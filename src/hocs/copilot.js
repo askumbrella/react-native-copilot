@@ -35,6 +35,8 @@ const copilot = ({
   backdropColor,
   verticalOffset = 0,
   tooltipContainerStyle,
+  arrowSize,
+  arrowColor,
 } = {}) =>
   (WrappedComponent) => {
     class Copilot extends Component<any, State> {
@@ -184,6 +186,8 @@ const copilot = ({
               isFirstStep={this.isFirstStep()}
               isLastStep={this.isLastStep()}
               tooltipContainerStyle={tooltipContainerStyle}
+              arrowSize={arrowSize}
+              arrowColor={arrowColor}
               currentStepNumber={this.getStepNumber()}
               currentStep={this.state.currentStep}
               stepNumberComponent={stepNumberComponent}
