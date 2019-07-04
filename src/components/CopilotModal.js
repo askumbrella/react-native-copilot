@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Animated, Easing, View, NativeModules, Modal, StatusBar, Platform } from 'react-native';
 import Tooltip from './Tooltip';
 import StepNumber from './StepNumber';
-import styles, { MARGIN, ARROW_SIZE, STEP_NUMBER_DIAMETER, STEP_NUMBER_RADIUS } from './style';
+import styles, { MARGIN, DEFAULT_ARROW_SIZE, STEP_NUMBER_DIAMETER, STEP_NUMBER_RADIUS } from './style';
 
 type Props = {
   stop: () => void,
@@ -124,18 +124,21 @@ class CopilotModal extends Component<Props, State> {
 
     const verticalPosition = relativeToBottom > relativeToTop ? 'bottom' : 'top';
     const horizontalPosition = relativeToLeft > relativeToRight ? 'left' : 'right';
+    const arrowSize = this.props.arrowSize || DEFAULT_ARROW_SIZE;
 
     const tooltip = {};
-    const arrow = {};
+    const arrow = {
+      borderWidth: arrowSize,
+    };
 
     if (verticalPosition === 'bottom') {
       tooltip.top = obj.top + obj.height + MARGIN;
-      arrow.borderBottomColor = '#fff';
-      arrow.top = tooltip.top - (ARROW_SIZE * 2);
+      arrow.borderBottomColor = this.props.arrowColor || '#fff';
+      arrow.top = tooltip.top - (arrowSize * 2);
     } else {
       tooltip.bottom = layout.height - (obj.top - MARGIN);
-      arrow.borderTopColor = '#fff';
-      arrow.bottom = tooltip.bottom - (ARROW_SIZE * 2);
+      arrow.borderTopColor = this.props.arrowColor || '#fff';
+      arrow.bottom = tooltip.bottom - (arrowSize * 2);
     }
 
     if (horizontalPosition === 'left') {
@@ -263,7 +266,7 @@ class CopilotModal extends Component<Props, State> {
           currentStepNumber={this.props.currentStepNumber}
         />
       </Animated.View>,
-      <Animated.View key="arrow" style={[styles.arrow, this.state.arrow]} />,
+      <Animated.View key="arrow" style={[styles.arrow, this.state.arrow, this.props.arrowStyle]} />,
       <Animated.View key="tooltip" style={[styles.tooltip, this.state.tooltip, this.props.tooltipContainerStyle]}>
         <TooltipComponent
           isFirstStep={this.props.isFirstStep}
