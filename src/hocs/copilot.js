@@ -1,5 +1,5 @@
 // @flow
-import React, { Component, Fragment } from 'react';
+import React, { Component, View } from 'react';
 import PropTypes from 'prop-types';
 
 import mitt from 'mitt';
