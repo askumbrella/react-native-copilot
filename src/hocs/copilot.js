@@ -1,6 +1,8 @@
 // @flow
-import React, { Component, View } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
+import { View } from 'react-native';
 
 import mitt from 'mitt';
 import hoistStatics from 'hoist-non-react-statics';
