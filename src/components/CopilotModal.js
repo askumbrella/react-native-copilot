@@ -62,7 +62,7 @@ class CopilotModal extends Component<Props, State> {
     containerVisible: false,
   };
 
-  componentDidUpdate(nextProps: Props) {
+  componentDidUpdate(prevProps: Props) {
     if (this.props.visible === false && prevProps.visible === true) {
       this.reset();
     }
